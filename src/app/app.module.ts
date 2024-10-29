@@ -9,10 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { TablaPedidosComponent } from './tabla-pedidos/tabla-pedidos.component';
+import { TablaCalzadoComponent } from './tabla-calzado/tabla-calzado.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    TablaInventarioComponent
+    TablaInventarioComponent,
+    TablaPedidosComponent,
+    TablaCalzadoComponent
+
   ],
   imports: [
     BrowserModule,

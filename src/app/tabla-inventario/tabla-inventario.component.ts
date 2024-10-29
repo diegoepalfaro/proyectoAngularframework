@@ -49,13 +49,36 @@ export class TablaInventarioComponent implements OnInit {
   }
 
   editarPrenda(index: number) {
-    this.nuevaPrenda = { ...this.prendas[index] };
+    const prendaAEditar = this.prendas[index];
+    this.nuevaPrenda = { ...prendaAEditar };
     this.editIndex = index;
+  }
+
+  actualizarPrenda() {
+    if (this.editIndex !== null) {
+      const prendaaActualizar = this.prendas[this.editIndex];
+  
+      if (prendaaActualizar.id) {
+        this.firestoreService.actualizarPrenda(prendaaActualizar.id, this.nuevaPrenda)
+          .then(() => {
+            // Actualizar en la tabla local
+           /* this.prendas[this.editIndex!] = { id: prendaaActualizar.id, ...this.nuevaPrenda }; // Usa `!` para indicar que no es null
+            this.editIndex = null;
+            this.nuevaPrenda = { prenda: '', color: '', cantidad: 0 };*/
+            console.log('Prenda actualizada en Firestore y en la tabla');
+          })
+          .catch(error => {
+            console.error('Error al actualizar prenda en Firestore:', error);
+          });
+      } else {
+        console.error('No se encontró el ID del documento para actualizar.');
+      }
+    }
   }
 
   eliminarPrenda(index: number) {
     const prendaAEliminar = this.prendas[index];
-    if (prendaAEliminar.id) { // Asegúrate de que el id esté disponible
+    if (prendaAEliminar.id) { 
       this.firestoreService.eliminarPrenda(prendaAEliminar.id)
         .then(() => {
           // Elimina de la tabla después de eliminar de Firestore

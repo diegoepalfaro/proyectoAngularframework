@@ -1,0 +1,62 @@
+
+<div>
+    <h3>{{ editIndex3 !== null ? 'Editar Calzado' : 'Agregar Nuevo Calzado' }}</h3>
+    <form (ngSubmit)="agregarCalzado()">
+      <label>
+        Marca:
+        <input type="text" [(ngModel)]="nuevoCalzado.marca" name="marca" required />
+      </label>
+      <label>
+      Modelo:
+      <input type="text" [(ngModel)]="nuevoCalzado.modelo" name="modelo" required />
+        </label>
+      <label>
+      Talla:
+      <input type="text" [(ngModel)]="nuevoCalzado.talla" name="talla" required />
+      </label>
+      <label>
+        Color:
+        <input type="text" [(ngModel)]="nuevoCalzado.color" name="color" required />
+      </label>
+      <label>
+        Cantidad:
+        <input type="number" [(ngModel)]="nuevoCalzado.cantidad" name="cantidad" required />
+      </label>
+      <button (click)="editIndex3 !== null ? actualizarCalzado() : agregarCalzado()">
+        {{ editIndex3 !== null ? 'Actualizar' : 'Agregar' }}
+      </button>
+      
+    </form>
+    
+    <h2>Inventario de Calzado</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Talla</th>
+          <th>Color</th>
+          <th>Cantidad</th>
+          <th>Acciones</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let calzado of calzados; let i = index">
+          <td>{{ calzado.marca }}</td>
+          <td>{{ calzado.modelo }}</td>
+          <td>{{ calzado.talla }}</td>
+          <td>{{ calzado.color }}</td>
+          <td>{{ calzado.cantidad }}</td>
+          <td>
+            <div class="table-buttons">
+            <button class="edit-button" (click)="editarCalzado(i)">Editar</button>
+            <button class="delete-button"(click)="eliminarCalzado(i)">Eliminar</button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  </div>
+  

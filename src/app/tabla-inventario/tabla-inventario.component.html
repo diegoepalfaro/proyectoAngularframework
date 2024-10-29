@@ -13,7 +13,10 @@
       Cantidad:
       <input type="number" [(ngModel)]="nuevaPrenda.cantidad" name="cantidad" required />
     </label>
-    <button type="submit">{{ editIndex !== null ? 'Guardar' : 'Agregar' }}</button>
+    <button (click)="editIndex !== null ? actualizarPrenda() : agregarPrenda()">
+      {{ editIndex !== null ? 'Actualizar' : 'Agregar' }}
+    </button>
+    
   </form>
   
   <h2>Inventario de Prendas</h2>
@@ -23,7 +26,7 @@
         <th>Prenda</th>
         <th>Color</th>
         <th>Cantidad</th>
-        <th>Acciones</th> <!-- Nueva columna para los botones de acción -->
+        <th>Acciones</th> 
       </tr>
     </thead>
     <tbody>
@@ -32,8 +35,10 @@
         <td>{{ prenda.color }}</td>
         <td>{{ prenda.cantidad }}</td>
         <td>
-          <button (click)="editarPrenda(i)">Editar</button>
-          <button (click)="eliminarPrenda(i)">Eliminar</button>
+          <div class="table-buttons">
+          <button class="edit-button" (click)="editarPrenda(i)">Editar</button>
+          <button class="delete-button"(click)="eliminarPrenda(i)">Eliminar</button>
+        </div>
         </td>
       </tr>
     </tbody>

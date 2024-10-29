@@ -1,0 +1,62 @@
+
+<div>
+    <h3>{{ editIndex2 !== null ? 'Editar Pedido' : 'Agregar Nuevo Pedido' }}</h3>
+    <form (ngSubmit)="agregarPedido()">
+      <label>
+        Equipo:
+        <input type="text" [(ngModel)]="nuevoPedido.equipo" name="equipo" required />
+      </label>
+      <label>
+        Dorsal:
+        <input type="number" [(ngModel)]="nuevoPedido.dorsal" name="dorsal" required />
+      </label>
+      <label>
+        Nombre:
+        <input type="text" [(ngModel)]="nuevoPedido.nombre" name="nombre" required />
+      </label>
+      <label>
+        Fecha:
+        <input type="text" [(ngModel)]="nuevoPedido.fecha" name="fecha" required />
+      </label>
+      <label>
+        Email:
+        <input type="text" [(ngModel)]="nuevoPedido.email" name="email" required />
+      </label>
+      <button (click)="editIndex2 !== null ? actualizarPedido() : agregarPedido()">
+        {{ editIndex2 !== null ? 'Actualizar' : 'Agregar' }}
+      </button>
+      
+    </form>
+    
+    <h2>Pedidos</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Equipo</th>
+          <th>Dorsal</th>
+          <th>Nombre</th>
+          <th>Fecha Pedido</th>
+          <th>Email</th>
+          <th>Acciones</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos; let i = index">
+          <td>{{ pedido.equipo }}</td>
+          <td>{{ pedido.dorsal }}</td>
+          <td>{{ pedido.nombre }}</td>
+          <td>{{ pedido.fecha }}</td>
+          <td>{{ pedido.email }}</td>
+          <td>
+            <div class="table-buttons">
+            <button class="edit-button" (click)="editarPedido(i)" >Editar</button>
+            <button class="delete-button"(click)="eliminarPedido(i)">Eliminar</button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  </div>
+  
