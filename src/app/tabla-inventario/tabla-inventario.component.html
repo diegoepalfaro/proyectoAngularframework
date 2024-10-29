@@ -1,0 +1,43 @@
+<div>
+  <h3>{{ editIndex !== null ? 'Editar Prenda' : 'Agregar Nueva Prenda' }}</h3>
+  <form (ngSubmit)="agregarPrenda()">
+    <label>
+      Prenda:
+      <input type="text" [(ngModel)]="nuevaPrenda.prenda" name="prenda" required />
+    </label>
+    <label>
+      Color:
+      <input type="text" [(ngModel)]="nuevaPrenda.color" name="color" required />
+    </label>
+    <label>
+      Cantidad:
+      <input type="number" [(ngModel)]="nuevaPrenda.cantidad" name="cantidad" required />
+    </label>
+    <button type="submit">{{ editIndex !== null ? 'Guardar' : 'Agregar' }}</button>
+  </form>
+  
+  <h2>Inventario de Prendas</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Prenda</th>
+        <th>Color</th>
+        <th>Cantidad</th>
+        <th>Acciones</th> <!-- Nueva columna para los botones de acción -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prenda of prendas; let i = index">
+        <td>{{ prenda.prenda }}</td>
+        <td>{{ prenda.color }}</td>
+        <td>{{ prenda.cantidad }}</td>
+        <td>
+          <button (click)="editarPrenda(i)">Editar</button>
+          <button (click)="eliminarPrenda(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
