@@ -2,10 +2,14 @@
 <div>
     <h3>{{ editIndex2 !== null ? 'Editar Pedido' : 'Agregar Nuevo Pedido' }}</h3>
     <form (ngSubmit)="agregarPedido()">
-      <label>
-        Equipo:
-        <input type="text" [(ngModel)]="nuevoPedido.equipo" name="equipo" required />
-      </label>
+      <label for="equipo" class="form-label">Equipo:</label>
+      <select [(ngModel)]="nuevoPedido.equipo" name="equipo" required>
+          <option value="" disabled selected>Selecciona un equipo</option>
+          <option value="Fas">Fas</option>
+          <option value="Alianza">Alianza</option>
+          <option value="Firpo">Firpo</option>
+      </select>
+    
       <label>
         Dorsal:
         <input type="number" [(ngModel)]="nuevoPedido.dorsal" name="dorsal" required />

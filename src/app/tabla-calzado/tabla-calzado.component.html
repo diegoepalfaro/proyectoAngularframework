@@ -2,10 +2,13 @@
 <div>
     <h3>{{ editIndex3 !== null ? 'Editar Calzado' : 'Agregar Nuevo Calzado' }}</h3>
     <form (ngSubmit)="agregarCalzado()">
-      <label>
-        Marca:
-        <input type="text" [(ngModel)]="nuevoCalzado.marca" name="marca" required />
-      </label>
+      <label for="marca" class="form-label">Marca:</label>
+      <select [(ngModel)]="nuevoCalzado.marca" name="marca" required>
+          <option value="" disabled selected>Selecciona una marca</option>
+          <option value="Nike">Nike</option>
+          <option value="Adidas">Adidas</option>
+          <option value="Puma">Puma</option>
+      </select>
       <label>
       Modelo:
       <input type="text" [(ngModel)]="nuevoCalzado.modelo" name="modelo" required />

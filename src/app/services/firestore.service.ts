@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 interface Prenda {
   prenda: string;
-  color: string;
+ 
   cantidad: number;
 }
 

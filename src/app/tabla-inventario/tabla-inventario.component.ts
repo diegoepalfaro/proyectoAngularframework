@@ -4,7 +4,7 @@ import { FirestoreService } from '../services/firestore.service';
 interface Prenda {
   id?: string;
   prenda: string;
-  color: string;
+  
   cantidad: number;
 }
 
@@ -15,7 +15,7 @@ interface Prenda {
 })
 export class TablaInventarioComponent implements OnInit {
   prendas: Prenda[] = [];
-  nuevaPrenda: Prenda = { prenda: '', color: '', cantidad: 0 };
+  nuevaPrenda: Prenda = { prenda: '', cantidad: 0 };
   editIndex: number | null = null;
 
   constructor(private firestoreService: FirestoreService) {}
@@ -28,7 +28,7 @@ export class TablaInventarioComponent implements OnInit {
   }
 
   agregarPrenda() {
-    if (this.nuevaPrenda.prenda && this.nuevaPrenda.color && this.nuevaPrenda.cantidad > 0) {
+    if (this.nuevaPrenda.prenda && this.nuevaPrenda.cantidad > 0) {
       if (this.editIndex !== null) {
         this.prendas[this.editIndex] = { ...this.nuevaPrenda };
         this.editIndex = null;
@@ -44,7 +44,7 @@ export class TablaInventarioComponent implements OnInit {
             console.error('Error al añadir prenda a Firestore:', error);
           });
       }
-      this.nuevaPrenda = { prenda: '', color: '', cantidad: 0 };
+      this.nuevaPrenda = { prenda: '', cantidad: 0 };
     }
   }
 

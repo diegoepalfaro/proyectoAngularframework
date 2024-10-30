@@ -1,13 +1,9 @@
 <div>
-  <h3>{{ editIndex !== null ? 'Editar Prenda' : 'Agregar Nueva Prenda' }}</h3>
+  <h3>{{ editIndex !== null ? 'Editar Equipación' : 'Agregar Nueva Equipación' }}</h3>
   <form (ngSubmit)="agregarPrenda()">
     <label>
-      Prenda:
+      Equipación:
       <input type="text" [(ngModel)]="nuevaPrenda.prenda" name="prenda" required />
-    </label>
-    <label>
-      Color:
-      <input type="text" [(ngModel)]="nuevaPrenda.color" name="color" required />
     </label>
     <label>
       Cantidad:
@@ -19,12 +15,11 @@
     
   </form>
   
-  <h2>Inventario de Prendas</h2>
+  <h2>Inventario de Equipaciones</h2>
   <table border="1">
     <thead>
       <tr>
-        <th>Prenda</th>
-        <th>Color</th>
+        <th>Equipación</th>
         <th>Cantidad</th>
         <th>Acciones</th> 
       </tr>
@@ -32,7 +27,7 @@
     <tbody>
       <tr *ngFor="let prenda of prendas; let i = index">
         <td>{{ prenda.prenda }}</td>
-        <td>{{ prenda.color }}</td>
+        
         <td>{{ prenda.cantidad }}</td>
         <td>
           <div class="table-buttons">

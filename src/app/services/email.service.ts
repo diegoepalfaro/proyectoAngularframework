@@ -14,7 +14,7 @@ export class EmailService {
     emailjs.init(this.userId);
   }
 
-  enviarEmail(data: { nombre: string;equipo:string; fecha: string; dorsal: number; to_email: string }) {
+  enviarEmail(data: { nombre: string; equipo:string; fecha: string; dorsal: number; to_email: string }) {
     return emailjs.send(this.serviceId, this.templateId, data);
   }
 }
