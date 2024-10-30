@@ -49,6 +49,7 @@
           <td>{{ pedido.email }}</td>
           <td>
             <div class="table-buttons">
+              <button (click)="enviarCorreo(i)">Enviar</button>
             <button class="edit-button" (click)="editarPedido(i)" >Editar</button>
             <button class="delete-button"(click)="eliminarPedido(i)">Eliminar</button>
           </div>

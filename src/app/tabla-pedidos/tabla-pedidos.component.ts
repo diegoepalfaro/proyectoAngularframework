@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
+import { EmailService } from '../services/email.service';
 
 interface Pedido {
   id?: string;
@@ -20,7 +21,9 @@ export class TablaPedidosComponent implements OnInit {
   nuevoPedido: Pedido = { equipo: '', dorsal: 0, nombre: '',fecha:'',email: '' };
   editIndex2: number | null = null;
 
-  constructor(private firestoreService: FirestoreService) {}
+  constructor(private firestoreService: FirestoreService,
+    private emailService: EmailService
+  ) {}
 
   ngOnInit(): void {
     // Llama a obtenerPrendas y suscríbete para actualizar la lista de prendas
@@ -89,5 +92,22 @@ export class TablaPedidosComponent implements OnInit {
     }
   }
   
+  enviarCorreo(index: number) {
+    const pedido = this.pedidos[index];
+    const data = {
+      equipo: pedido.equipo,
+      dorsal: pedido.dorsal,
+      nombre: pedido.nombre,
+      fecha: pedido.fecha,
+      to_email: pedido.email
+    };
+
+    this.emailService.enviarEmail(data)
+      .then(() => {
+        console.log('Correo enviado con éxito');
+      })
+      .catch((error) => {
+        console.error('Error al enviar correo:', error);
+      });
   
-}
+}}

@@ -17,11 +17,14 @@ import { TablaCalzadoComponent } from './tabla-calzado/tabla-calzado.component';
     AppComponent,
     TablaInventarioComponent,
     TablaPedidosComponent,
-    TablaCalzadoComponent
+    TablaCalzadoComponent,
+    
 
   ],
   imports: [
+   
     BrowserModule,
+  
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), // Inicializar Firebase
